@@ -1,9 +1,4 @@
-//
-//  Hello World server in C++
-//  Binds REP socket to tcp://*:5555
-//  Expects "Hello" from client, replies with "World"
-//
-#include <zmq.hpp>
+#include "zmq.hpp"
 #include <string>
 #include <iostream>
 #ifndef _WIN32
@@ -17,7 +12,7 @@
 int main () {
     //  Prepare our context and socket
     zmq::context_t context (2);
-    zmq::socket_t socket (context, zmq::socket_type::rep);
+    zmq::socket_t socket (context, zmq::socket_type::router);
     socket.bind ("tcp://*:5555");
 
     while (true) {
